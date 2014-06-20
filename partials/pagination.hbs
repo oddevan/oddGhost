@@ -1,0 +1,12 @@
+<ul class="pager">
+  {{#if prev}}
+  <li class="previous"><a href="{{pageUrl prev}}">&larr; Older</a></li>
+  {{else}}
+  <li class="previous disabled"><a href="#">&larr; Older</a></li>
+  {{/if}}
+	{{#if next}}
+  <li class="next"><a href="{{pageUrl next}}">Newer &rarr;</a></li>
+  {{else}}
+  <li class="next disabled"><a href="#">Newer &rarr;</a></li>
+  {{/if}}
+</ul>

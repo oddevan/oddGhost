@@ -6,95 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{meta_title}}</title>
 
-		{{! asset "css/screen.css"}}
-
 		<link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    
-    <style type="text/css">
-    /*
- * Globals
- */
-
-body {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  color: #555;
-}
-
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
-  margin-top: 0;
-  font-family: Raleway, "Helvetica Neue", Helvetica, "Comic Sans", sans-serif !important;
-  font-weight: 300;
-  color: #333;
-}
-
-
-/*
- * Main column and sidebar layout
- */
-
-.blog-main {
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-.blog-sidebar {
-	font-family: "Helvetica Neue", Helvetica, "Comic Sans", sans-serif;
-}
-
-.blog-sidebar div.col-sm-6 {
-	margin-bottom: 30px;
-}
-
-/* Pagination */
-.pager {
-  margin-bottom: 60px;
-  text-align: left;
-}
-.pager > li > a {
-  width: 140px;
-  padding: 10px 20px;
-  text-align: center;
-  border-radius: 30px;
-}
-
-
-/*
- * Blog posts
- */
-
-.blog-post {
-  margin-bottom: 60px;
-}
-.blog-post-title {
-  margin-bottom: 5px;
-  font-size: 40px;
-}
-.blog-post-meta {
-  margin-bottom: 20px;
-  color: #999;
-}
-
-
-/*
- * Footer
- */
-
-.blog-footer {
-  padding: 40px 0;
-  color: #999;
-  text-align: center;
-  background-color: #f9f9f9;
-  border-top: 1px solid #e5e5e5;
-}
-
-    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -102,14 +16,22 @@ h6, .h6 {
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+		<link rel="stylesheet" type="text/css" media="screen" href="{{asset "css/screen.css"}}">
+
+		<style type="text/css">
+		h1 a { 
+			background: url({{asset "images/headline.png"}});
+		}
+		</style>
     
     {{ghost_head}}
     
   </head>
   <body class="{{body_class}}">
-    <div class="jumbotron">
+    <div class="jumbotron" id="jumbotop">
     	<div class="container">
-    		<h1><a href="/">{{@blog.title}}</a></h1>
+    		<h1><a href="/"><span class="sr-only">{{@blog.title}}</span></a></h1>
     		<p id="tagline">{{@blog.description}}</p>
     	</div>
     </div>
@@ -126,37 +48,22 @@ h6, .h6 {
         
     		<div class="col-md-4 col-lg-3 col-lg-offset-1 blog-sidebar">
     			<div class="row">
-    				<div class="col-sm-6 col-md-12">
+    				<div class="col-sm-6 col-md-12 well">
     					<h2><a href="http://pilltimer.oddevan.com/"><span>PillTimer</span></a></h2>
 							<p>Get my free app PillTimer, an easy way to track when you took your medicine. For iPhone and iPad.</p>
 							<p><a href="http://pilltimer.oddevan.com/">Learn more</a> | <a href="https://itunes.apple.com/us/app/pilltimer-take-your-medicine/id624064313?ls=1&mt=8">App Store</a></p>
     				</div>
     				<div class="col-sm-6 col-md-12">
-    					<h2>Categories</h2>
-								<ul class="nav nav-pills nav-stacked">
-									<li><a href="/category/reviews">Reviews</a></li>
-									<li><a href="/category/analysis">Analysis</a></li>
-									<li><a href="/category/ramblings">Ramblings</a></li>
-									<li><a href="/category/introspection">Introspection</a></li>
-									<li><a href="/about">About</a></li>
+								<ul class="nav nav-pills nav-stacked" id="sections">
+									<li><a href="/tag/analysis/">Analysis</a></li>
+									<li><a href="/tag/reviews/">Reviews</a></li>
+									<li><a href="/tag/ramblings/">Ramblings</a></li>
+									<li><a href="/tag/introspection/">Introspection</a></li>
+									<li><a href="/about/">About</a></li>
 								</ul>
     				</div>
     			</div>
     			<div class="row">
-    				<div class="col-sm-6 col-md-12">
-    					<h2>Archives</h2>
-								<ul class="nav nav-pills nav-stacked">
-									<li><a href='/2014'>2014</a></li>
-									<li><a href='/2013'>2013</a></li>
-									<li><a href='/2012'>2012</a></li>
-									<li><a href='/2011'>2011</a></li>
-									<li><a href='/2009'>2009</a></li>
-									<li><a href='/2008'>2008</a></li>
-									<li><a href='/2007'>2007</a></li>
-									<li><a href='/2006'>2006</a></li>
-									<li><a href='/2005'>2005</a></li>
-								</ul>
-    				</div>
     				<div class="col-sm-6 col-md-12">
     					<h2>Find me on</h2>
 								<ul class="nav nav-pills nav-stacked">
@@ -164,6 +71,7 @@ h6, .h6 {
 									<li><a href="http://www.facebook.com/evan.hildreth">Facebook</a></li>
 									<li><a href="http://paperairplanemob.tumblr.com/">Tumblr</a></li>
 									<li><a href="http://youtube.com/oddevan">YouTube</a></li>
+									<li><a href="http://keybase.io/oddevan">Keybase</a></li>
 									<li><a href="http://github.com/oddevan">GitHub</a></li>
 									<li><a href="http://app.net/oddevan">App.net</a></li>
 								</ul>
@@ -175,9 +83,9 @@ h6, .h6 {
     
     <div class="blog-footer">
     	<div class="container">
-      <p id="updates">Get new articles via <a href="http://twitter.com/oddevandotcom">Twitter</a>, <a href="http://app.net/oddevandotcom/">App.net</a>, or <a href="http://www.oddevan.com/feed/atom">RSS</a>.</p>
-			<p>oddEvan.com is &copy; <a href="http://eph.me/">Evan Hildreth</a> who is solely responsible for its content.<br>
-		   This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/deed.en_US">Creative Commons Attribution 4.0 Unported License</a> unless otherwise noted.</p>
+      <p id="updates">Get new articles via <a href="http://twitter.com/oddevandotcom">Twitter</a>, <a href="http://app.net/oddevandotcom/">App.net</a>, or <a href="/rss/">RSS</a>.</p>
+			<p><a href="http://eph.me/">Built by Evan Hildreth</a> in <a href="http://lifeingreenville.com/">Greenville, SC</a>.<br>
+		   &copy; Evan Hildreth. Licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/deed.en_US">Creative Commons Attribution 4.0 Unported License</a> unless otherwise noted.</p>
 		  </div>
     </div>
 
