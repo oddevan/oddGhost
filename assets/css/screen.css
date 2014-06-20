@@ -23,8 +23,11 @@ h6, .h6 {
 	background: #036;
 	color: #fff;
 	border-bottom: 5px solid #369;
-	position: relative;
 	height: 400px;
+}
+
+#jumbotop div.container {
+	position: relative;
 }
 
 #jumbotop h1 a {
@@ -34,14 +37,14 @@ h6, .h6 {
 	text-decoration: none;
 	position: absolute;
 	top: 175px;
-	left: 100px;
+	left: 0px;
 }
 
 #tagline {
   font-family: "Helvetica Neue", Helvetica, "Comic Sans", sans-serif !important;
   position: absolute;
   top: 260px;
-  left: 200px;
+  left: 100px;
 }
 
 /*
@@ -94,6 +97,15 @@ h6, .h6 {
 .blog-post-meta {
   margin-bottom: 20px;
   color: #999;
+}
+
+.blog-post p {
+	margin-bottom: 20px;
+}
+
+.blog-post h3 {
+	margin-bottom: 20px;
+	font-size: 1.5em;
 }
 
 .blog-post .well {
