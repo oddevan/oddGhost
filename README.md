@@ -1,8 +1,10 @@
-# oddGhost
+# Casper
 
-A [Ghost](http://github.com/tryghost/ghost/) theme for [oddEvan](http://www.oddevan.com/)
-based on [Casper](https://github.com/TryGhost/Casper).
+The default theme for [Ghost](http://github.com/tryghost/ghost/).
+
+To download, visit the [releases](https://github.com/TryGhost/Casper/releases) page.
 
 ## Copyright & License
 
-oddGhost is released under the MIT license. See the `LICENSE` file for more.
+Copyright (c) 2013-2017 Ghost Foundation - Released under the [MIT license](LICENSE).
+

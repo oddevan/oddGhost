@@ -1,99 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head>
+    {{!-- Document Settings --}}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    {{!-- Page Meta --}}
     <title>{{meta_title}}</title>
+    <meta name="description" content="{{meta_description}}" />
 
-		<link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    {{!-- Mobile Meta --}}
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    {{!-- Brand icon --}}
+    <link rel="shortcut icon" href="{{asset "favicon.ico"}}">
 
-		<link rel="stylesheet" type="text/css" media="screen" href="{{asset "css/screen.css"}}">
+    {{!-- Styles'n'Scripts --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
 
-		<style type="text/css">
-		h1 a { 
-			background: url({{asset "images/headline.png"}});
-		}
-		</style>
-    
+    {{!-- Ghost outputs important style and meta data with this tag --}}
     {{ghost_head}}
-    
-  </head>
-  <body class="{{body_class}}">
-    <div class="jumbotron" id="jumbotop">
-    	<div class="container">
-    		<h1><a href="/"><span class="sr-only">{{@blog.title}}</span></a></h1>
-    		<p id="tagline">{{@blog.description}}</p>
-    	</div>
-    </div>
-    
-    <div class="container">
-    	<div class="row">
-    		
-    		<div class="col-md-8 blog-main">
+</head>
+<body class="{{body_class}} nav-closed">
 
-    {{! Everything else gets inserted here }}
-    {{{body}}}
+    {{!-- The blog navigation links --}}
+    {{navigation}}
 
-        </div><!-- /.blog-main -->
-        
-    		<div class="col-md-4 col-lg-3 col-lg-offset-1 blog-sidebar">
-    			<div class="row">
-    				<div class="col-sm-6 col-md-12 well">
-    					<h2><a href="http://pilltimer.oddevan.com/"><span>PillTimer</span></a></h2>
-							<p>Get my free app PillTimer, an easy way to track when you took your medicine. For iPhone and iPad.</p>
-							<p><a href="http://pilltimer.oddevan.com/">Learn more</a> | <a href="https://itunes.apple.com/us/app/pilltimer-take-your-medicine/id624064313?ls=1&mt=8">App Store</a></p>
-    				</div>
-    				<div class="col-sm-6 col-md-12">
-								<ul class="nav nav-pills nav-stacked" id="sections">
-									<li><a href="/tag/analysis/">Analysis</a></li>
-									<li><a href="/tag/reviews/">Reviews</a></li>
-									<li><a href="/tag/ramblings/">Ramblings</a></li>
-									<li><a href="/tag/introspection/">Introspection</a></li>
-									<li><a href="/about/">About</a></li>
-								</ul>
-    				</div>
-    			</div>
-    			<div class="row">
-    				<div class="col-sm-6 col-md-12">
-    					<h2>Find me on</h2>
-								<ul class="nav nav-pills nav-stacked">
-									<li><a href="http://twitter.com/oddevan">Twitter</a></li>
-									<li><a href="http://www.facebook.com/evan.hildreth">Facebook</a></li>
-									<li><a href="http://paperairplanemob.tumblr.com/">Tumblr</a></li>
-									<li><a href="http://youtube.com/oddevan">YouTube</a></li>
-									<li><a href="http://keybase.io/oddevan">Keybase</a></li>
-									<li><a href="http://github.com/oddevan">GitHub</a></li>
-									<li><a href="http://app.net/oddevan">App.net</a></li>
-								</ul>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    </div>
-    
-    <div class="blog-footer">
-    	<div class="container">
-      <p id="updates">Get new articles via <a href="http://twitter.com/oddevandotcom">Twitter</a>, <a href="http://app.net/oddevandotcom/">App.net</a>, or <a href="/rss/">RSS</a>.</p>
-			<p><a href="http://eph.me/">Built by Evan Hildreth</a> in <a href="http://lifeingreenville.com/">Greenville, SC</a>.<br>
-		   &copy; Evan Hildreth. Licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/deed.en_US">Creative Commons Attribution 4.0 Unported License</a> unless otherwise noted.</p>
-		  </div>
+    <div class="site-wrapper">
+
+        {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+        {{{body}}}
+
+        {{!-- The tiny footer at the very bottom --}}
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="{{@blog.url}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}}</section>
+            <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+
     </div>
 
-		{{ghost_foot}}
+    {{!-- jQuery needs to come before `{{ghost_foot}}` so that jQuery can be used in code injection --}}
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    {{!-- Ghost outputs important scripts and data with this tag --}}
+    {{ghost_foot}}
+    {{!-- Fitvids makes video embeds responsive and awesome --}}
+    <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
+    {{!-- The main JavaScript file for Casper --}}
+    <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>
